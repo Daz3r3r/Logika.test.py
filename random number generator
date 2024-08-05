@@ -1,0 +1,29 @@
+from PyQt5.QtCore import Qt 
+from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QLabel, QVBoxLayout
+from random import randint
+
+generation = QApplication([])
+window = QWidget()
+window.setWindowTitle("Генератор")
+window.resize(400,300)
+
+
+nadpus1 = QLabel("Натисни, щоб дізнатися переможця")
+nadpus2 = QLabel("?")
+knopka = QPushButton("Згенерувати")
+
+line = QVBoxLayout()
+
+line.addWidget(nadpus1,alignment = Qt.AlignCenter)
+line.addWidget(nadpus2,alignment = Qt.AlignCenter)
+line.addWidget(knopka,alignment = Qt.AlignCenter)
+
+def gen():
+    a = randint(1,100)
+    nadpus2.setText(str(a))
+
+knopka.clicked.connect(gen)
+window.setLayout(line)
+
+window.show()
+generation.exec_()
